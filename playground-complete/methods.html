@@ -8,21 +8,22 @@
 </head>
 <body>
   <div id="app">
-    <button v-on:click="logText">click me</button>
-    <input type="text" v-on:keyup.enter="logText">
-    <button>add</button>
+      <button v-on:click="logText">click me</button>
+      <!--keyup 뒤의 modifier를 붙인다.-->
+      <input type="text" v-on:keyup.enter="logText">
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
-    new Vue({
-      el: '#app',
-      methods: {
-        logText: function() {
-          console.log('clicked');
-        }
-      }
-    })
+      new Vue({
+          el: '#app',
+          // 이벤트를 처리하고 화면을 조작하는 메서드는 여러 개다
+          methods: {
+              logText: function () {
+                  console.log('clicked')
+              }
+          }
+      })
   </script>
 </body>
 </html>
