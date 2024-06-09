@@ -8,46 +8,55 @@
 </head>
 <body>
   <div id="app">
-    <div>
-      <router-link to="/login">Login</router-link>
-      <router-link to="/main">Main</router-link>
-    </div>
-    <router-view></router-view>
+      <div>
+          <!--라우터에서 페이지 이동을 위한 링크 태그-->
+          <router-link to="/login">Login</router-link>
+          <router-link to="/main">Main</router-link>
+      </div>
+      <router-view></router-view>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!--CDN 방식-->
   <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
   <script>
-    var LoginComponent = {
-      template: '<div>login</div>'
-    }
-    var MainComponent = {
-      template: '<div>main</div>'
-    }
 
-    var router = new VueRouter({
-      // 페이지의 라우팅 정보      
-      routes: [
-        // 로그인 페이지 정보
-        {
-          // 페이지의 url
-          path: '/login',
-          // name: 'login',
-          // 해당 url에서 표시될 컴포넌트
-          component: LoginComponent
-        },
-        // 메인 페이지 정보
-        {
-          path: '/main',
-          component: MainComponent
-        }
-      ]
-    });
+      var LoginComponent = {
+          template: '<div>login</div>'
+      }
+      var MainComponent = {
+          template: '<div>main</div>'
+      }
 
-    new Vue({
-      el: '#app',
-      router: router,
-    });
+      var router = new VueRouter({
+          // 페이지의 라우팅 정보(어떤 url로 들어갔을 때 어떤 정보가 들어갈지 배열 형태로 담긴다)
+          // 페이지의 개수만큼 객체가 필요하다
+          routes: [
+              // url에서 해시(#)를 없애고 싶다면 쓰는 코드
+              // mode: history,
+              // 로그인 페이지 정보
+              {
+                  // 페이지의 url 이름
+                  path: '/login',
+                  // name: 'login',
+                  // 해당 url에서 표시될 컴포넌트
+                  // 해당 페이지마다 뿌려질 컴포넌트는 1개이기 때문에 s가 붙지 않는다.
+                  component: LoginComponent
+              },
+              // 메인 페이지 정보
+              {
+                  path: '/main',
+                  component: MainComponent
+              }
+          ]
+      });
+
+      new Vue({
+          el: '#app',
+          // 뷰 인스턴스의 라우터를 주입시킨다
+          // 라우터뷰를 인식할 수 없으면 라우터가 연결되지 않았다는 것을 뜻하게 된다
+          router: router
+      });
   </script>
 </body>
 </html>
