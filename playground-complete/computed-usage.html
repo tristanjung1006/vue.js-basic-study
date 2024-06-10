@@ -14,6 +14,7 @@
 <body>
   <div id="app">
     <p v-bind:class="errorTextColor">Hello</p>
+<!--    <p v-bind:class="{warning: isError}">Hello</p>-->
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -21,9 +22,10 @@
     new Vue({
       el: '#app',
       data: {
-        // cname: 'blue-text',
+      // cname: 'blue-text',
         isError: false
       },
+      // computed 속성을 클래스 바인딩에 넣을 수 있다
       computed: {
         errorTextColor: function() {
           // if (isError) {
@@ -31,6 +33,7 @@
           // } else {
           //   return null;
           // }
+          // 삼항 연산자로 코드 줄임
           return this.isError ? 'warning' : null;
         }
       }

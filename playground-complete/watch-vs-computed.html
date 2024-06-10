@@ -16,14 +16,19 @@
     new Vue({
       el: '#app',
       data: {
+      // 기준이 되는 값
         num: 10
       },
+      // 간단한 텍스트 연산
       computed: {
+        // 뷰 내부적으로 계산을 하는 속성
         doubleNum: function() {
           return this.num * 2;
         }
       },
+      // 무거운 로직(데이터 요청)
       watch: {
+        // 값의 변화를 추적하기 때문에 이전값과 갱신된 값을 인자로 받는다
         num: function(newValue, oldValue) {
           this.fetchUserByNumber(newValue);
         }
